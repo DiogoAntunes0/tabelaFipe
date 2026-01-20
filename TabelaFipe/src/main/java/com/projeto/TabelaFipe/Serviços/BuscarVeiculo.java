@@ -1,4 +1,4 @@
-package com.projeto.TabelaFipe.BuscaVeiculo;
+package com.projeto.TabelaFipe.Serviços;
 
 import java.io.IOException;
 import java.net.URI;
