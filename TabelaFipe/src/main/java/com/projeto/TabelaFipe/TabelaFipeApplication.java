@@ -35,7 +35,6 @@ public class TabelaFipeApplication implements CommandLineRunner {
 		System.out.println("Motos.");
 		System.out.println("Caminhoes.");
 
-		try{
 			String veiculo1 = ler.nextLine();
 			String ENDERECO = "https://parallelum.com.br/fipe/api/v1/" + veiculo1.toLowerCase() + "/marcas";
 
@@ -43,10 +42,6 @@ public class TabelaFipeApplication implements CommandLineRunner {
 
 			Veiculo json = converterDados.ConverteDados(veiculo, Veiculo.class);
 			System.out.println(json);
-		} catch (InputMismatchException e){
-			System.out.println("Error: Invalid input. Please enter a valid integer.");
-		}
-
 
 		/*System.out.println("Digite o modelo: (CÓDIGO)");
 		String marca = ler.nextLine();
