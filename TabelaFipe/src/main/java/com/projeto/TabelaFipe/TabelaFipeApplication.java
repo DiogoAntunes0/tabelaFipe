@@ -11,12 +11,6 @@ import java.util.*;
 @SpringBootApplication
 public class TabelaFipeApplication implements CommandLineRunner {
 
-	private final ContentNegotiationManager contentNegotiationManager;
-
-	public TabelaFipeApplication(ContentNegotiationManager contentNegotiationManager) {
-		this.contentNegotiationManager = contentNegotiationManager;
-	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(TabelaFipeApplication.class, args);
 	}
@@ -53,27 +47,19 @@ public class TabelaFipeApplication implements CommandLineRunner {
 		List<Marca> marcaVeiculos = modelosWrapper.modelos();
 		marcaVeiculos.forEach(System.out::println);
 
+		System.out.println("Digite o código do modelo que deseja:");
+		String modeloVeiculo = ler.nextLine();
 
+		String ENDERECO3 = "https://parallelum.com.br/fipe/api/v1/" + nomeVeiculo.toLowerCase() + "/marcas/" + cod + "/modelos/" + modeloVeiculo + "/anos";
+		String jsonModelos = buscarVeiculo.buscarVeiculo(ENDERECO3);
 
+		System.out.println(jsonModelos);
 
-
-		/*System.out.println("Digite o modelo: (CÓDIGO)");
-		String marca = ler.nextLine();
-		ENDERECO = "https://parallelum.com.br/fipe/api/v1/" + veiculo + "/marcas/" + marca + "/modelos";
-		json = buscarVeiculo.buscarVeiculo(ENDERECO);
-		System.out.println(json);
-
-		System.out.println("Digite o ano do veículo: (CÓDIGO)");
-		String modelo = ler.nextLine();
-		ENDERECO = "https://parallelum.com.br/fipe/api/v1/" + veiculo + "/marcas/" + marca + "/modelos/" + modelo + "/anos";
-		json = buscarVeiculo.buscarVeiculo(ENDERECO);
-		System.out.println(json);
-
-		System.out.println("Digite o ano do veículo: (CÓDIGO)");
+		System.out.println("Digite o código do ano que deseja");
 		String anoVeiculo = ler.nextLine();
-		ENDERECO = "https://parallelum.com.br/fipe/api/v1/" + veiculo + "/marcas/" + marca + "/modelos/" + modelo + "/anos/" + anoVeiculo;
-		json = buscarVeiculo.buscarVeiculo(ENDERECO);
-		System.out.println(json);
-*/
+
+		String Endereco = "https://parallelum.com.br/fipe/api/v1/" + nomeVeiculo.toLowerCase() + "/marcas/" + cod + "/modelos/" + modeloVeiculo + "/anos/" + anoVeiculo;
+		String jsonAnoVeiculo = buscarVeiculo.buscarVeiculo(Endereco);
+		System.out.println(jsonAnoVeiculo.toString());
 	}
 }

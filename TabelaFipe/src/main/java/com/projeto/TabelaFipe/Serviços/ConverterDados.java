@@ -11,8 +11,8 @@ public class ConverterDados implements IConverterDados {
     @Override
     public <T> T ConverteDados(String json, Class<T> classe) {
         try {
-            return mapper.readValue(json,
-                    mapper.getTypeFactory().constructCollectionType(List.class, classe));
+            return mapper.readValue(json, classe);
+                    //mapper.getTypeFactory().constructCollectionType(classe));
         } catch (JsonProcessingException e) {
             throw new RuntimeException("Erro ao converter para lista", e);
         }
