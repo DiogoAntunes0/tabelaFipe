@@ -1,15 +1,12 @@
 package com.projeto.TabelaFipe;
 
-import com.projeto.TabelaFipe.Serviços.BuscarVeiculo;
-import com.projeto.TabelaFipe.Serviços.ConverterDados;
-import com.projeto.TabelaFipe.Serviços.Veiculo;
+import com.projeto.TabelaFipe.Serviços.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.accept.ContentNegotiationManager;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 @SpringBootApplication
 public class TabelaFipeApplication implements CommandLineRunner {
@@ -30,18 +27,35 @@ public class TabelaFipeApplication implements CommandLineRunner {
 		BuscarVeiculo buscarVeiculo = new BuscarVeiculo();
 		ConverterDados converterDados = new ConverterDados();
 
+
 		System.out.println("Qual veículo deseja consultar? (Digite o veículo)");
 		System.out.println("Carros.");
 		System.out.println("Motos.");
 		System.out.println("Caminhoes.");
 
-			String veiculo1 = ler.nextLine();
-			String ENDERECO = "https://parallelum.com.br/fipe/api/v1/" + veiculo1.toLowerCase() + "/marcas";
+			String nomeVeiculo = ler.nextLine();
+			String ENDERECO = "https://parallelum.com.br/fipe/api/v1/" + nomeVeiculo.toLowerCase() + "/marcas";
 
 			String veiculo = buscarVeiculo.buscarVeiculo(ENDERECO);
 
-			Veiculo json = converterDados.ConverteDados(veiculo, Veiculo.class);
-			System.out.println(json);
+			List<Veiculo> veiculoList = converterDados.obterLista(veiculo, Veiculo.class);
+			veiculoList.forEach(System.out::println);
+
+		System.out.println("Digite o código da marca do veículo: ");
+		String cod = ler.nextLine();
+
+		String ENDERECO2 = "https://parallelum.com.br/fipe/api/v1/" + nomeVeiculo.toLowerCase() + "/marcas/" + cod + "/modelos";
+
+		String marca = buscarVeiculo.buscarVeiculo(ENDERECO2);
+
+		ModelosWrapper modelosWrapper = converterDados.ConverteDados(marca, ModelosWrapper.class);
+
+		List<Marca> marcaVeiculos = modelosWrapper.modelos();
+		marcaVeiculos.forEach(System.out::println);
+
+
+
+
 
 		/*System.out.println("Digite o modelo: (CÓDIGO)");
 		String marca = ler.nextLine();
