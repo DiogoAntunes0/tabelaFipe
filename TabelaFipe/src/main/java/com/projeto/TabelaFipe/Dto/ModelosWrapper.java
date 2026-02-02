@@ -1,4 +1,4 @@
-package com.projeto.TabelaFipe.Serviços;
+package com.projeto.TabelaFipe.Serviços.Dto;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

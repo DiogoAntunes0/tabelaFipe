@@ -1,4 +1,4 @@
-package com.projeto.TabelaFipe.Serviços;
+package com.projeto.TabelaFipe.Serviços.Controller;
 
 import java.io.IOException;
 import java.net.URI;

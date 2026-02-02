@@ -1,11 +1,14 @@
-package com.projeto.TabelaFipe;
+package com.projeto.TabelaFipe.Serviços.Principal;
 
 import com.projeto.TabelaFipe.Serviços.*;
+import com.projeto.TabelaFipe.Serviços.Controller.BuscarVeiculo;
+import com.projeto.TabelaFipe.Serviços.Dto.AnoVeiculo;
+import com.projeto.TabelaFipe.Serviços.Dto.Marca;
+import com.projeto.TabelaFipe.Serviços.Dto.ModelosWrapper;
+import com.projeto.TabelaFipe.Serviços.Dto.Veiculo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.accept.ContentNegotiationManager;
-
 import java.util.*;
 
 @SpringBootApplication
@@ -58,8 +61,11 @@ public class TabelaFipeApplication implements CommandLineRunner {
 		System.out.println("Digite o código do ano que deseja");
 		String anoVeiculo = ler.nextLine();
 
-		String Endereco = "https://parallelum.com.br/fipe/api/v1/" + nomeVeiculo.toLowerCase() + "/marcas/" + cod + "/modelos/" + modeloVeiculo + "/anos/" + anoVeiculo;
+		String Endereco = "https://parallelum.com.br/fipe/api/v1/" + nomeVeiculo.toLowerCase() + "/marcas/" + cod + "/modelos/" + modeloVeiculo + "/anos/" + anoVeiculo + "/";
+
 		String jsonAnoVeiculo = buscarVeiculo.buscarVeiculo(Endereco);
-		System.out.println(jsonAnoVeiculo.toString());
+		AnoVeiculo anoVeiculo1 = converterDados.ConverteDados(jsonAnoVeiculo, AnoVeiculo.class);
+		System.out.println(anoVeiculo1.toString());
+
 	}
 }
