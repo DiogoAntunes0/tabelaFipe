@@ -1,4 +1,4 @@
-package com.projeto.TabelaFipe.Serviços.Controller;
+package com.projeto.TabelaFipe.Controller;
 
 import java.io.IOException;
 import java.net.URI;
@@ -6,7 +6,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class BuscarVeiculo {
+public class fipeAPI {
     public String buscarVeiculo(String endereco) {
 
         HttpClient client = HttpClient.newHttpClient();
