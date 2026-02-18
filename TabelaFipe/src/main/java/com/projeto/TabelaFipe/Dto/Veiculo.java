@@ -8,8 +8,7 @@ public record Veiculo(@JsonAlias("codigo") String cod,
                       @JsonAlias("nome") String nome) {
     @Override
     public String toString() {
-        return "Marca: " +
-                nome +
-                ", Código: " + cod + '\'';
+        return "Marca: " + nome
+               + ", Código: " + cod + '\n';
     }
 }

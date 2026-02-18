@@ -1,4 +1,4 @@
-package com.projeto.TabelaFipe.Serviços;
+package com.projeto.TabelaFipe.Services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,7 +12,7 @@ public class ConverterDados implements IConverterDados {
         try {
             return mapper.readValue(json, classe);
         } catch (JsonProcessingException e) {
-            throw new RuntimeException("Erro ao converter para lista", e);
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -21,7 +21,7 @@ public class ConverterDados implements IConverterDados {
             return mapper.readValue(json,
                     mapper.getTypeFactory().constructCollectionType(List.class, classe));
         } catch (JsonProcessingException e) {
-            throw new RuntimeException("Erro ao converter lista", e);
+            throw new RuntimeException(e.getMessage());
         }
     }
 }

@@ -1,6 +1,6 @@
-package com.projeto.TabelaFipe.Principal;
+package com.projeto.TabelaFipe.Main;
 
-import com.projeto.TabelaFipe.Serviços.FipeService;
+import com.projeto.TabelaFipe.Services.FipeService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
